@@ -12,6 +12,8 @@ private:
 public:
     Node(int val, int weight);
 
+    int getValue() const;
+
     void print() const;
 
     bool operator<(const Node &other) const;

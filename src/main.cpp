@@ -1,24 +1,21 @@
 #include <iostream>
 #include <set>
 #include "Node.h"
+#include "Compaire.h"
 
-int main()
-{
+int main() {
     Node apple_1(3, 250);
     Node apple_2(1, 350);
     Node apple_3(2, 100);
-    std::set<Node,std::greater<>> set_apple;
+    std::set<Node, LessDisplay> set_apple;
     set_apple.insert(apple_1);
     set_apple.insert(apple_2);
     set_apple.insert(apple_3);
-    for (auto it : set_apple)
-    {
+    for (auto it: set_apple) {
         it.print();
     }
-
-
 }
-/*
+/* 1.
 	std::set<int> set;
 	set.insert(5);
 	set.insert(9);
@@ -46,3 +43,28 @@ int main()
 	std::cout << *find2 << std::endl;
 	//std::cout << *set.find(15) << std::endl;
 	*/
+
+/* 2.
+    Node apple_1(3, 250);
+    Node apple_2(1, 350);
+    Node apple_3(2, 100);
+    std::set<Node, std::greater<>> set_apple;
+    set_apple.insert(apple_1);
+    set_apple.insert(apple_2);
+    set_apple.insert(apple_3);
+    for (auto it: set_apple) {
+        it.print();
+    }
+
+/* 3.
+    Node apple_1(3, 250);
+    Node apple_2(1, 350);
+    Node apple_3(2, 100);
+    std::set<Node, Less> set_apple;
+    set_apple.insert(apple_1);
+    set_apple.insert(apple_2);
+    set_apple.insert(apple_3);
+    for (auto it: set_apple) {
+        it.print();
+    }
+    */
