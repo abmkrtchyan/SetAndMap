@@ -10,7 +10,9 @@ private:
     int weight;
 
 public:
-    Node(int val, int weight);
+    Node(int val = 0, int weight = 0);
+
+    Node(const Node &);
 
     int getValue() const;
 
