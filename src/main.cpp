@@ -2,6 +2,7 @@
 #include <set>
 #include <map>
 #include <algorithm>
+#include <functional>
 #include "Node.h"
 #include "Compaire.h"
 
@@ -94,7 +95,6 @@ void test4() {
     Node apple_1(3, 250);
     Node apple_2(1, 350);
     Node apple_3(2, 100);
-    LessDisplay count;
     std::set<Node, LessDisplay> set_apple;
     set_apple.insert(apple_1);
     set_apple.insert(apple_2);
@@ -102,6 +102,13 @@ void test4() {
     for (const auto &it: set_apple) {
         it.print();
     }
+    auto foundApple = set_apple.upper_bound(apple_2);
+    if (foundApple != set_apple.end()) {
+        std::cout << (*foundApple).getValue() << std::endl;
+    } else {
+        std::cout << "Not found!!" << std::endl;
+    }
+
     std::cout << "______________________________________" << std::endl;
 }
 
@@ -140,10 +147,13 @@ void test5() {
 
 void test6() {
     std::cout << "________________Test6_________________" << std::endl;
-    std::set<int, std::greater<>> set1 = {50, 40, 30, 30, 20, 10};
+    auto lambdaCompare = [](int a, int b) { return a > b; };
+    std::set<int, std::function<bool(int, int)>> set1(lambdaCompare);
+    set1 = {50, 40, 30, 30, 20, 10};
     auto key_comp = set1.key_comp(); // key_comp(key1, key2)
     auto value_comp = set1.value_comp();
-    std::set<int, std::greater<>> set2 = {40, 50, 30, 30, 10, 20, 10};
+    std::set<int, std::function<bool(int, int)>> set2(lambdaCompare);
+    set2 = {40, 50, 30, 30, 10, 20, 10};
     std::cout << "set1 ==  set2: " << (set1 == set2 ? "True" : "False") << std::endl;
 
     set1 = {10, 20, 30, 50, 60};
@@ -166,10 +176,10 @@ void test7() {
     std::map<int, int> intMap;
 
     intMap[42] = 1;
-    intMap[15] = 1;
-    intMap[15] = 1; // Note: map will overwrite the value associated with the key.
-    intMap[30] = 1;
-    intMap[10] = 1;
+    intMap[15] = 2;
+    intMap[15] = 3;
+    intMap[30] = 4;
+    intMap[10] = 5;
 
     std::cout << "Elements in the map:";
     for (const auto &element: intMap) {
