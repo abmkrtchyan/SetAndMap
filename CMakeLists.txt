@@ -5,6 +5,11 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(include)
 
-add_executable(SetAndMap
-        src/main.cpp
-        src/Node.cpp)
+set(SOURCE_FILES
+    src/Node.cpp
+)
+
+add_library(Lib STATIC ${SOURCE_FILES})
+
+add_subdirectory(set)
+add_subdirectory(map)

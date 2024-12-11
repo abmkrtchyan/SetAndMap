@@ -1,9 +1,6 @@
 #ifndef SET_MAP_NODE_H
 #define SET_MAP_NODE_H
 
-
-#include <iostream>
-
 class Node {
 private:
     int val;

@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "Node.h"
 
 Node::Node(int val, int weight) : val(val), weight(weight) {}
